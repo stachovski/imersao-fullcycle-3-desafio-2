@@ -1,0 +1,47 @@
+version: "3"
+
+services:
+  db:
+    build: .docker/db
+    container_name: imersao-fullcycle-3-desafio-2-api-db
+    restart: always
+    tty: true
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=routes
+    volumes:
+      - .docker/db/dbdata:/var/lib/postgresl/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: imersao-fullcycle-3-desafio-2-api-pgadmin
+    tty: true
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@user.com
+      - PGADMIN_DEFAULT_PASSWORD=123456
+    ports:
+      - 9000:80
+
+  api:
+    build: .docker/api
+    entrypoint: dockerize -wait tcp://db:5432 -timeout 60s /entrypoint.sh
+    container_name: imersao-fullcycle-3-desafio-2-api
+    ports:
+      - 3000:3000
+    volumes:
+      - ./desafio-2-api:/home/node/app
+      - ./.docker/api/entrypoint.sh:/entrypoint.sh
+    depends_on:
+      - db
+
+  frontend:
+    build: .docker/frontend
+    entrypoint: dockerize -wait tcp://api:3000 -timeout 60s /entrypoint.sh
+    container_name: imersao-fullcycle-3-desafio-2-frontend
+    ports:
+      - 3001:3000
+    volumes:
+      - ./desafio-2-frontend:/home/node/app
+      - ./.docker/frontend/entrypoint.sh:/entrypoint.sh
+    depends_on: 
+      - api
