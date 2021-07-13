@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: imersao-fullcycle-3-desafio-3-api-db
+  name: imersao-fullcycle-3-desafio-3-db
 spec:
   selector:
     matchLabels:
-      app: imersao-fullcycle-3-desafio-3-api-db
+      app: imersao-fullcycle-3-desafio-3-db
   template:
     metadata:
       labels:
-        app: imersao-fullcycle-3-desafio-3-api-db
+        app: imersao-fullcycle-3-desafio-3-db
     spec:
       containers:
-        - name: imersao-fullcycle-3-desafio-3-api-db
+        - name: imersao-fullcycle-3-desafio-3-db
           image: postgres:13
           ports:
             - containerPort: 5432
@@ -25,11 +25,11 @@ spec:
               cpu: "0.2"
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
-              name: imersao-fullcycle-3-desafio-3-api-db
+              name: imersao-fullcycle-3-desafio-3-db
           envFrom:
           - configMapRef:
-              name: imersao-fullcycle-3-desafio-3-api-db-config
+              name: imersao-fullcycle-3-desafio-3-db-config
       volumes:
-        - name: imersao-fullcycle-3-desafio-3-api-db
+        - name: imersao-fullcycle-3-desafio-3-db
           persistentVolumeClaim:
-            claimName: imersao-fullcycle-3-desafio-3-api-db-pvc
+            claimName: imersao-fullcycle-3-desafio-3-db-pvc

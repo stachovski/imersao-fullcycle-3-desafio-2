@@ -23,3 +23,6 @@ spec:
             requests:
               memory: 256Mi
               cpu: "0.2"
+          env:
+          - name: "NEXT_PUBLIC_STORE_API_URL"
+            value: "http://imersao-fullcycle-3-desafio-3-api:3000"
