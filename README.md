@@ -13,7 +13,7 @@ Projeto criado para cumprir o 3º desafio da Imersão FullCycle 3.0
 
 Após fazer o clone do projeto é necessário criar um cluster K8s (usando a ferramenta desejada, p. ex.: kind, k3d etc.).
 
-Após a criação do cluster é necessário aplicar os manifestos k8s localizados na pastas "k8s (k8s)" usando os comandos 
+Após a criação do cluster é necessário aplicar os manifestos k8s localizados na pastas [k8s](k8s) usando os comandos 
 
 ```
 $: cd k8s
