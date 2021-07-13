@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imersao-fullcycle-3-desafio-3-frontend
+spec:
+  selector:
+    matchLabels:
+      app: imersao-fullcycle-3-desafio-3-frontend
+  template:
+    metadata:
+      labels:
+        app: imersao-fullcycle-3-desafio-3-frontend
+    spec:
+      containers:
+        - name: imersao-fullcycle-3-desafio-3-frontend
+          image: stachovski/imersao-fullcycle-3-desafio-3-frontend:latest
+          ports:
+            - containerPort: 3001
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "1"
+            requests:
+              memory: 256Mi
+              cpu: "0.2"

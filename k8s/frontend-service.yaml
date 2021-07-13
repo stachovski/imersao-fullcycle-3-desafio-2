@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: imersao-fullcycle-3-desafio-3-frontend
+spec:
+  selector:
+    app: imersao-fullcycle-3-desafio-3-frontend
+  ports:
+    - port: 3001
+      targetPort: 3001
+  type: ClusterIP
